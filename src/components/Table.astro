@@ -1,0 +1,185 @@
+---
+const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
+import { Image } from "astro:assets";
+import TableElement from "./TableElement.astro";
+---
+
+<!--
+  Heads up! 👋
+
+  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
+-->
+<div class="overflow-x-auto">
+  <table class="min-w-full divide-y-2 divide-gray-200 text-sm" id="my-node">
+    <thead class="ltr:text-left rtl:text-right">
+      <tr>
+        <th class="whitespace-nowrap py-2 font-medium"></th>
+        <th class="whitespace-nowrap py-2 font-medium"></th>
+
+        <th class="whitespace-nowrap py-2 font-medium"></th>
+      </tr>
+    </thead>
+
+    <tbody class="divide-y divide-gray-200">
+      
+      <TableElement
+      name="Galileo Chiantilei"
+      number="17"
+      idTr="giocatore0"
+      idCheck="vero0"
+    />
+      
+      <TableElement
+        name="Brandy Bellucci"
+        number="20"
+        idTr="giocatore1"
+        idCheck="vero1"
+      />
+      
+      <TableElement
+        name="Vodka Verdi"
+        number="18"
+        idTr="giocatore2"
+        idCheck="vero2"
+      />
+      <TableElement
+        name="Rum Rodriguez"
+        number="18"
+        idTr="giocatore3"
+        idCheck="vero3"
+      />
+      <TableElement
+        name="Sangria Sanchez"
+        number="21"
+        idTr="giocatore4"
+        idCheck="vero4"
+      />
+      <TableElement
+        name="Limoncello Lawrence"
+        number="23"
+        idTr="giocatore5"
+        idCheck="vero5"
+      />
+      <TableElement
+        name="Chianti Chandler"
+        number="21"
+        idTr="giocatore6"
+        idCheck="vero6"
+      />
+      <TableElement
+        name="Tequila Thompson"
+        number="19"
+        idTr="giocatore7"
+        idCheck="vero7"
+      />
+      <TableElement
+        name="Sangiovese Winslet"
+        number="22"
+        idTr="giocatore8"
+        idCheck="vero8"
+      />
+      <TableElement
+        name="Moscato McConaughey"
+        number="18"
+        idTr="giocatore9"
+        idCheck="vero9"
+      />
+      <TableElement
+        name="Barbera Roberts"
+        number="21"
+        idTr="giocatore10"
+        idCheck="vero10"
+      />
+      <TableElement
+        name="Prosecco DiCaprio"
+        number="23"
+        idTr="giocatore11"
+        idCheck="vero11"
+      />
+      <TableElement
+        name="Pinot Grigio Damon"
+        number="17"
+        idTr="giocatore12"
+        idCheck="vero12"
+      />
+      <TableElement
+        name="Syrah Connery"
+        number="19"
+        idTr="giocatore13"
+        idCheck="vero13"
+      />
+    </tbody>
+  </table>
+</div>
+<div class="py-4">
+  <p>
+    Valore Squadra:
+    <b id="totale"></b>
+  </p>
+</div>
+<div class="py-4"><button class="alert">Vedi Squadra</button></div>
+
+<script>
+  // Find all buttons with the `alert` class on the page.
+  const buttons = document.querySelectorAll("button.alert");
+  let pecFig = document.getElementsByName("figura");
+
+  // Handle clicks on each button.
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      for (let i = 0; i < pecFig.length; i++) {
+        let vero = "vero" + i;
+        let element = document.getElementById(vero) as HTMLInputElement;
+       
+        let giocatore = "giocatore" + i;
+        if (element.checked == false) {
+          let display = document.getElementById(
+            giocatore,
+          ) as HTMLInputElement;
+          display.style.display = "none";
+        }
+      }
+    });
+  });
+</script>
+
+<script>
+  // Interfaccia per il checkbox e il numberbox
+  interface CheckboxElement extends HTMLInputElement {
+    checked: boolean;
+  }
+
+  interface NumberboxElement extends HTMLElement {
+    innerText: string;
+  }
+
+  // Funzione per gestire l'evento di cambio stato della checkbox
+  function handleCheckboxChange(): void {
+    const checkboxes = document.getElementsByName(
+      "figura"
+    ) as NodeListOf<CheckboxElement>;
+    const currentValueElement = document.getElementById(
+      "totale"
+    ) as NumberboxElement;
+
+    // Calcola il nuovo valore sommando i valori selezionati
+    let newValue = 0;
+    checkboxes.forEach((checkbox) => {
+      if (checkbox.checked) {
+        newValue += parseInt(checkbox.value);
+      }
+    });
+
+    // Aggiorna il valore nel numberbox
+    currentValueElement.innerText = newValue.toString();
+  }
+
+  // Aggiungi l'evento di cambio stato a tutte le checkbox
+  const checkboxes = document.getElementsByName(
+    "figura"
+  ) as NodeListOf<CheckboxElement>;
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", handleCheckboxChange);
+  });
+</script>
