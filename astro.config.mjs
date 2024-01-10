@@ -8,4 +8,5 @@ export default defineConfig({
   site: 'https://mancio8.github.io',
   base: '/fantaVinalia',
   integrations: [mdx(), sitemap(), tailwind()]
+  
 });

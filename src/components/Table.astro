@@ -1,7 +1,7 @@
 ---
 const { title, img, desc, url, badge, tags, target = "_blank" } = Astro.props;
 import { Image } from "astro:assets";
-import TableElement from "./TableElement.astro";
+import TableElement from "../components/TableElement.astro";
 ---
 
 <!--
@@ -9,7 +9,9 @@ import TableElement from "./TableElement.astro";
 
   This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
 -->
-<div class="overflow-x-auto">
+<div class="grid flex-grow h-32 card rounded-box justify-items-end"><button class="btn btn-secondary ">Reset Squadra</button></div> 
+<div class="overflow-x-auto" id="divToCapture">
+  <h1 class="text-center text-secondary" id="nomeSquadra"></h1>
   <table class="min-w-full divide-y-2 divide-gray-200 text-sm" id="my-node">
     <thead class="ltr:text-left rtl:text-right">
       <tr>
@@ -108,20 +110,50 @@ import TableElement from "./TableElement.astro";
         idTr="giocatore13"
         idCheck="vero13"
       />
+      <tr class="bg-base-300">
+        <td class="whitespace-nowrap px-2 py-2 font-medium ">
+          </td>
+        <td class="whitespace-nowrap py-2 font-medium "><strong class="text-secondary">Lista Cantina</strong></td>
+       
+       
+        <td class="whitespace-nowrap px-6 py-2">
+            
+                
+                
+        </td>
+      </tr>
+      <TableElement
+        name="Cantina Pirata"
+        number="0"
+        idTr="giocatore14"
+        idCheck="vero14"
+      />
+      <TableElement
+      name="Vigne Storte"
+      number="0"
+      idTr="giocatore15"
+      idCheck="vero15"
+    />
     </tbody>
   </table>
 </div>
+
 <div class="py-4">
-  <p>
+  <div class="divider divider-secondary"> <p>
     Valore Squadra:
-    <b id="totale"></b>
-  </p>
+    <strong id="totale"></strong>
+  </p></div>
 </div>
-<div class="py-4"><button class="alert">Vedi Squadra</button></div>
+<div class="flex flex-col w-full lg:flex-row">
+  
+  
+  <div class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center"><input id="inputNomeSquadra" type="text" placeholder="Dai un nome alla squadra" class="input w-full max-w-xs" /><button id="captureButton" class="btn btn-primary">Crea Squadra</button></div>
+</div>
+
 
 <script>
   // Find all buttons with the `alert` class on the page.
-  const buttons = document.querySelectorAll("button.alert");
+  const buttons = document.querySelectorAll("button.btn-primary");
   let pecFig = document.getElementsByName("figura");
 
   // Handle clicks on each button.
@@ -139,6 +171,9 @@ import TableElement from "./TableElement.astro";
           display.style.display = "none";
         }
       }
+      let nomeS = document.getElementById("inputNomeSquadra") as HTMLInputElement;
+      let nomeTeam = document.getElementById("nomeSquadra") as HTMLInputElement;
+      nomeTeam.innerText = nomeS.value
     });
   });
 </script>
@@ -183,3 +218,53 @@ import TableElement from "./TableElement.astro";
     checkbox.addEventListener("change", handleCheckboxChange);
   });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Ottieni tutti i tag <b> all'interno del documento
+    const boldTags = document.querySelectorAll('b');
+
+    // Itera attraverso ogni tag <b>
+    boldTags.forEach((boldTag) => {
+        // Ottieni il valore come numero
+        const value = parseFloat(boldTag.textContent || '0');
+
+        // Controlla se il valore è maggiore di zero
+        if (value === 0) {
+            // Se il valore è uguale a zero, nascondi il tag <b>
+            boldTag.style.display = 'none';
+        } else {
+            // Altrimenti, fai qualcos'altro (puoi aggiungere ulteriori logiche qui)
+            console.log(`Il valore di ${boldTag.textContent} è maggiore di zero`);
+        }
+    });
+});
+</script>
+
+<script>
+  //Tasto Reset
+  // Find all buttons with the `alert` class on the page.
+  const buttons = document.querySelectorAll("button.btn-secondary");
+  let pecFig = document.getElementsByName("figura");
+
+  // Handle clicks on each button.
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      for (let i = 0; i < pecFig.length; i++) {
+        let vero = "vero" + i;
+        let element = document.getElementById(vero) as HTMLInputElement;
+       
+        let giocatore = "giocatore" + i;
+       
+          let display = document.getElementById(
+            giocatore,
+          ) as HTMLInputElement;
+          display.style.display = "";
+        
+      }
+      let nomeS = document.getElementById("inputNomeSquadra") as HTMLInputElement;
+      let nomeTeam = document.getElementById("nomeSquadra") as HTMLInputElement;
+      nomeTeam.innerText = ""
+    });
+  });
+</script>
+
