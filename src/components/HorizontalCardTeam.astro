@@ -1,0 +1,88 @@
+---
+const {
+  nomeSquadra,
+  punti,
+  giocatore1,
+  giocatore2,
+  giocatore3,
+  giocatore4,
+  giocatore5,
+  cantina,
+} = Astro.props;
+import { Image } from "astro:assets";
+import TableElementTeam from "../components/TableElementTeam.astro";
+---
+
+<div
+  class="rounded-lg bg-base-300 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
+>
+  
+    <div class="hero-content flex-col md:flex-row">
+      <div class="grow w-full">
+        <details class="collapse bg-base-200 text-center">
+          <summary class="collapse-title text-xl font-medium">
+            {nomeSquadra}<div class="divider divider-secondary divider-end">
+              {punti}
+            </div>
+          </summary>
+
+          <div class="collapse-content">
+            <table
+              class="min-w-full divide-y-2 divide-gray-200 text-sm"
+              id="my-node"
+            >
+              <thead class="ltr:text-left rtl:text-right">
+                <tr>
+                  <th class="whitespace-nowrap py-2 font-medium"></th>
+                  <th class="whitespace-nowrap py-2 font-medium"></th>
+                </tr>
+              </thead>
+
+              <tbody class="divide-y divide-gray-200">
+                <TableElementTeam name={giocatore1} idTr="giocatore1" />
+
+                <TableElementTeam name={giocatore2} idTr="giocatore2" />
+
+                <TableElementTeam name={giocatore3} idTr="giocatore3" />
+                <TableElementTeam name={giocatore4} idTr="giocatore4" />
+                <TableElementTeam name={giocatore5} idTr="giocatore5" />
+                <TableElementTeam name={cantina} idTr="cantina" />
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </div>
+  
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  // Selezioniamo tutti gli elementi <span> con la classe "name"
+  const spansWithNameClass = document.querySelectorAll('span.vodka');
+
+  // Iteriamo su tutti gli elementi selezionati e cambiamo il testo
+  spansWithNameClass.forEach((span) => {
+    span.textContent = '5';
+  });
+});
+document.addEventListener('DOMContentLoaded', () => {
+  // Selezioniamo tutti gli elementi <span> con la classe "name"
+  const spansWithNameClass = document.querySelectorAll('span.azzurro');
+
+  // Iteriamo su tutti gli elementi selezionati e cambiamo il testo
+  spansWithNameClass.forEach((span) => {
+    span.textContent = '15';
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Selezioniamo tutti gli elementi <span> con la classe "name"
+  const spansWithNameClass = document.querySelectorAll('span.Rum.Bianco');
+
+  // Iteriamo su tutti gli elementi selezionati e cambiamo il testo
+  spansWithNameClass.forEach((span) => {
+    span.textContent = '25';
+  });
+});
+</script>

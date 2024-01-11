@@ -1,0 +1,112 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HorizontalCard from "../components/HorizontalCard.astro";
+import { getCollection } from "astro:content";
+import createSlug from "../lib/createSlug";
+import Table from "../components/Table.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const last_posts = posts.slice(0, 3);
+---
+
+<BaseLayout sideBarActiveItemID="home">
+  <div class="pb-12 mt-5">
+    <div class="py-2">
+      <text class="text-lg">
+        Benvenuti nella pagina dei bonus e dei malus di FantaVinalia. In questo
+        affascinante universo, ogni scelta, ogni performance e ogni evento
+        influenzerà il destino del vostro fantateam, portandovi gioie
+        inaspettate o sfide impreviste. I bonus e i malus sono l'essenza di
+        FantaVinalia, la moneta con cui pagherete il prezzo del rischio o
+        godrete dei frutti delle vostre intuizioni. Ogni decisione tattica,
+        dalla selezione dei partecipanti alla previsione delle esibizioni, può
+        portare a conseguenze inaspettate. Sarà la vostra abilità strategica a
+        determinare il successo o il fallimento del vostro fantateam. In questa
+        pagina, esploreremo i vari fattori che possono influenzare i punteggi
+        dei partecipanti nel vostro fantateam. Dalle eccezionali performance
+        alcoliche che vi regaleranno bonus entusiasmanti, alle scelte errate che
+        comporteranno malus dolorosi, ogni dettaglio conta in FantaVinalia.
+        Preparatevi a vivere emozioni intense, a sperimentare momenti di gloria
+        e a superare sfide inaspettate mentre vi immergete nel magico mondo di
+        Fantavinalia. La vostra avventura inizia qui, dove i bonus e i malus
+        sono la chiave per vincere.
+      </text>
+    </div>
+    <div class="mt-8"></div>
+  </div>
+  <div class="divider divider-success">Bonus</div>
+  <HorizontalCard
+    title="Sospiro d'Arte Ambientale: Il Campione delle Caraffe!"
+    img=""
+    desc="Dopo ogni straordinaria festa di Fantavinalia, emerge un eroe silenzioso, un asso nell'arte della raccolta delle caraffe. Se tu sei quel coraggioso avventuriero, pronto a sfidare il disordine e a risolvere l'enigma delle caraffe abbandonate, allora preparati a guadagnarti il nostro esclusivo Bonus Sospiro d'Arte Ambientale!"
+    url="#"
+    badge="+5"
+    classBadge="badge badge-outline badge-success mx-2 text-success"
+  />
+  <div class="divider divider-start"></div>
+  <HorizontalCard
+    title="Navigatori Notturni: Il Custode del Ritorno!"
+    img=""
+    desc="Colui che non teme l'oscurità e si offre volontario per garantire un ritorno sicuro a tutti i partecipanti. Se sei il gentile spirito notturno, il navigher delle strade buie, allora preparati a guadagnarti il nostro speciale Bonus Navigatori Notturni!"
+    url="#"
+    badge="+10"
+    classBadge="badge badge-outline badge-success mx-2 text-success"
+  />
+  <div class="divider divider-start"></div>
+  <HorizontalCard
+    title="Cantina Inesauribile: Il Maestro dell'Abbondanza!"
+    img=""
+    desc="Sei tu il leggendario Mago delle Bottiglie, l'artista che trasforma ogni festa in un inebriante spettacolo di generosità? Allora preparati a conquistare il cuore di Fantavinalia con il nostro Bonus Cantina Inesauribile! Ogni volta che offrirai vino come se la tua cantina fosse una fonte magica di infinita abbondanza, accumulerai 10 punti extra. Sii il sommelier della serata, il maestro della libagione, e lascia che il tuo spirito generoso trasformi ogni bicchiere in un sorriso."
+    url="#"
+    badge="+10"
+    classBadge="badge badge-outline badge-success mx-2 text-success"
+  />
+  <div class="divider divider-start"></div>
+  <HorizontalCard
+    title="Palco Infuocato: Il Virtuoso del Divertimento!"
+    img=""
+    desc="Sei l'animatore nato di Fantavinalia, il campione della pista da ballo, il re o la regina della festa? Allora preparati ad essere insignito del nostro speciale Bonus Palco Infuocato! Passa l'intera serata sotto il palco, danzando e cantando con un'energia inarrestabile, e guadagnerai 5 punti extra per dimostrare che il tuo spirito intraprendente è l'anima pulsante di Fantavinalia. E quando giunge il momento di chiudere la serata, se intoni la classica 'Se Non Metti l'Ultima', il tuo status di icona sarà completo, e il bonus sarà tuo!"
+    url="#"
+    badge="+5"
+    classBadge="badge badge-outline badge-success mx-2 text-success"
+  />
+  <div class="divider divider-start"></div>
+  <HorizontalCard
+    title="Alba di Coraggio: L'Eroe del Risveglio Anticipato!"
+    img=""
+    desc="Se sei il valoroso guerriero che, nonostante il dovere chiami all'alba, sceglie di rimanere fino all'ultimo istante della festa, allora meriti il nostro straordinario Bonus Alba di Coraggio! Ogni minuto trascorso sotto le stelle dopo che il richiamo del dovere ha suonato la sua tromba, ti guadagnerà 15 punti extra. Sei l'esploratore intraprendente della notte, il cavaliere dell'allegria che sfida il destino dell'alba imminente. Il tuo spirito coraggioso sarà riconosciuto come un faro luminoso in questa notte di festa."
+    url="#"
+    badge="+15"
+    classBadge="badge badge-outline badge-success mx-2 text-success"
+  />
+  <div class="divider divider-error">Malus</div>
+  <HorizontalCard
+    title="Passeggiata Penitente: Il Viandante Sconfitto!"
+    img=""
+    desc="Se durante Fantavinalia scopri di non essere abbastanza autonomo per fare ritorno a casa con le tue gambe, sappi che ciò potrebbe tradursi in un temibile Malus Passeggiata Penitente. Raccogli il tuo malus come una sorta di trofeo di autenticità e preparati ad affrontare le conseguenze di questa passeggiata senza ritorno!"
+    url="#"
+    badge="-10"
+    classBadge="badge badge-outline badge-error mx-2 text-error"
+  />
+  <div class="divider divider-start"></div>
+  <HorizontalCard
+    title=" Nettare Tradito: Il Fedifrago della Birra!"
+    img=""
+    desc="Se, in un mondo dove il vino è considerato il nettare degli dei, tu osi preferire la birra, preparati a subire il Malus Nettare Tradito. Ogni sorso di birra al posto del sacro vino ti costerà 10 punti, mentre gli sguardi sospettosi degli altri partecipanti potrebbero mettere in dubbio la tua devozione festiva. Il vino è il re della tavola a Fantavinalia; tradiscilo a tuo rischio e pericolo!"
+    url="#"
+    badge="-10"
+    classBadge="badge badge-outline badge-error mx-2 text-error"
+  />
+  <div class="divider divider-start"></div>
+  <HorizontalCard
+    title="Fantasma dell'Assenza: L'Eroe Mancato!"
+    img=""
+    desc="Se, invece di partecipare all'epica festa di Fantavinalia, scegli di saltare una serata, preparati a subire il Malus Fantasma dell'Assenza. Ogni serata saltata ti costerà 15 punti, mentre gli altri partecipanti potrebbero iniziare a chiedersi se sei diventato il Fantasma dell'Assenza, un mito che compare solo quando gli altri sono occupati a festeggiare. Riemergi dalla tua dimora invisibile e unisciti alla celebrazione a Fantavinalia!"
+    url="#"
+    badge="-15"
+    classBadge="badge badge-outline badge-error mx-2 text-error"
+  />
+</BaseLayout>

@@ -1,0 +1,18 @@
+---
+const { name, number, idTr, idCheck, numberId } = Astro.props;
+import { Image } from "astro:assets";
+
+---
+
+
+<tr id={idTr}>
+    <td class="whitespace-nowrap px-2 py-2 font-medium "><div class="avatar">
+      <div class="w-16 rounded-full">
+        <img src="https://www.anteprima24.it/wp-content/uploads/2020/07/logo-Vinalia-medio.jpg" /> 
+      </div>
+    </div></td>
+    <td class="whitespace-nowrap py-2 font-medium text-lg text-secondary"=>{name} <span class={name}>0</span></td>
+   
+   
+   
+  </tr>
