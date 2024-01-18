@@ -21,7 +21,7 @@ import Table from "../components/Table.astro";
   <div class="divider divider-success"></div>
   <HorizontalCardTeam
     nomeSquadra="Team1"
-    punti="0"
+    punti="5"
     giocatore1="vodka"
     giocatore2="rum"
     giocatore3="vino"
@@ -31,8 +31,8 @@ import Table from "../components/Table.astro";
   />
   <div class="divider divider-start"></div>
   <HorizontalCardTeam
-    nomeSquadra="Team1"
-    punti="0"
+    nomeSquadra="Team100"
+    punti="10"
     giocatore1="vodka"
     giocatore2="Rum Bianco"
     giocatore3="vino"
@@ -46,5 +46,34 @@ import Table from "../components/Table.astro";
   
 
 </BaseLayout>
+
+<script> 
+  interface ScoreData { 
+    element: HTMLDivElement; 
+    score: number; 
+  } 
+   
+  // Ottenere tutti gli elementi div all'interno del documento 
+  const allDivs = document.getElementsByTagName('div'); 
+   
+  // Filtrare gli elementi div che hanno l'attributo data-score 
+  const scoreDivs = Array.from(allDivs).filter((element) => element.hasAttribute('data-score')); 
+   
+  // Convertire NodeList in un array di ScoreData 
+  const scoreArray: ScoreData[] = scoreDivs.map((element) => { 
+    const score = parseInt(element.getAttribute('data-score') || '0', 10); 
+    return { element: element as HTMLDivElement, score }; 
+  }); 
+   
+  // Ordinare l'array in modo decrescente in base al punteggio 
+  scoreArray.sort((a, b) => b.score - a.score); 
+   
+  // Sostituire i div nell'ordine corretto nel DOM 
+  scoreArray.forEach((scoreData) => { 
+    const container = scoreData.element.parentElement; 
+    container?.appendChild(scoreData.element); 
+  }); 
+   
+    </script>
 
 

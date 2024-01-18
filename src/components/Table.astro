@@ -9,7 +9,9 @@ import TableElement from "../components/TableElement.astro";
 
   This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
 -->
-<div class="grid flex-grow h-32 card rounded-box justify-items-end"><button class="btn btn-secondary ">Reset Squadra</button></div> 
+<div class="grid flex-grow h-32 card rounded-box justify-items-end">
+  <button class="btn btn-secondary">Reset Squadra</button>
+</div>
 <div class="overflow-x-auto" id="divToCapture">
   <h1 class="text-center text-secondary" id="nomeSquadra"></h1>
   <table class="min-w-full divide-y-2 divide-gray-200 text-sm" id="my-node">
@@ -23,21 +25,46 @@ import TableElement from "../components/TableElement.astro";
     </thead>
 
     <tbody class="divide-y divide-gray-200">
-      
+      <tr hidden>
+        <td class="whitespace-nowrap px-2 py-2 font-medium"
+          ><div class="avatar">
+            <div class="w-16 rounded-full">
+              <img
+                src="https://www.anteprima24.it/wp-content/uploads/2020/07/logo-Vinalia-medio.jpg"
+              />
+            </div>
+          </div></td
+        >
+        <td class="whitespace-nowrap py-2 font-medium"
+          ><strong id="nomeSquadra2"></strong>
+        </td>
+
+        <td class="whitespace-nowrap px-6 py-2">
+          <input
+            name="figura"
+            type="checkbox"
+            id="vero16"
+            checked
+            value="0"
+            class="checkbox checkbox-secondary"
+          />
+        </td>
+      </tr>
+
       <TableElement
-      name="Galileo Chiantilei"
-      number="17"
-      idTr="giocatore0"
-      idCheck="vero0"
-    />
-      
+        name="Galileo Chiantilei"
+        number="17"
+        idTr="giocatore0"
+        idCheck="vero0"
+      />
+
       <TableElement
         name="Brandy Bellucci"
         number="20"
         idTr="giocatore1"
         idCheck="vero1"
       />
-      
+
       <TableElement
         name="Vodka Verdi"
         number="18"
@@ -111,16 +138,12 @@ import TableElement from "../components/TableElement.astro";
         idCheck="vero13"
       />
       <tr class="bg-base-300">
-        <td class="whitespace-nowrap px-2 py-2 font-medium ">
-          </td>
-        <td class="whitespace-nowrap py-2 font-medium "><strong class="text-secondary">Lista Cantina</strong></td>
-       
-       
-        <td class="whitespace-nowrap px-6 py-2">
-            
-                
-                
-        </td>
+        <td class="whitespace-nowrap px-2 py-2 font-medium"> </td>
+        <td class="whitespace-nowrap py-2 font-medium"
+          ><strong class="text-secondary">Lista Cantina</strong></td
+        >
+
+        <td class="whitespace-nowrap px-6 py-2"> </td>
       </tr>
       <TableElement
         name="Cantina Pirata"
@@ -129,27 +152,48 @@ import TableElement from "../components/TableElement.astro";
         idCheck="vero14"
       />
       <TableElement
-      name="Vigne Storte"
-      number="0"
-      idTr="giocatore15"
-      idCheck="vero15"
-    />
+        name="Vigne Storte"
+        number="0"
+        idTr="giocatore15"
+        idCheck="vero15"
+      />
     </tbody>
   </table>
 </div>
 
 <div class="py-4">
-  <div class="divider divider-secondary"> <p>
-    Valore Squadra:
-    <strong id="totale"></strong>
-  </p></div>
+  <div class="divider divider-secondary">
+    <p>
+      Valore Squadra:
+      <strong id="totale"></strong>
+    </p>
+  </div>
 </div>
 <div class="flex flex-col w-full lg:flex-row">
-  
-  
-  <div class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center"><input id="inputNomeSquadra" type="text" placeholder="Dai un nome alla squadra" class="input w-full max-w-xs" /><button id="captureButton" class="btn btn-primary">Crea Squadra</button></div>
+  <div
+    class="grid flex-grow h-32 card bg-base-300 rounded-box place-items-center"
+  >
+<div class="flex w-full">
+  <div class="grid h-20 flex-grow card bg-base-300 rounded-box place-items-center"><input
+    id="inputNomeSquadra"
+    type="text"
+    placeholder="Dai un nome alla squadra"
+    class="input w-full max-w-xs input-bordered input-error"
+  /></div>
+  <div class="divider divider-horizontal" ></div>
+  <div class="grid h-20 flex-grow card bg-base-300 rounded-box place-items-center"><input
+    id="inputUsername"
+    type="text"
+    placeholder="Dai un tuo username"
+    class="input w-full max-w-xs input-bordered input-error"
+  /></div>
 </div>
-
+    
+    
+    <button id="captureButton" class="btn btn-primary">Crea Squadra</button>
+  </div>
+</div>
+<button id="inviaTelegram">Invia squadra</button>
 
 <script>
   // Find all buttons with the `alert` class on the page.
@@ -162,18 +206,25 @@ import TableElement from "../components/TableElement.astro";
       for (let i = 0; i < pecFig.length; i++) {
         let vero = "vero" + i;
         let element = document.getElementById(vero) as HTMLInputElement;
-       
+
         let giocatore = "giocatore" + i;
         if (element.checked == false) {
-          let display = document.getElementById(
-            giocatore,
-          ) as HTMLInputElement;
+          let display = document.getElementById(giocatore) as HTMLInputElement;
           display.style.display = "none";
         }
       }
-      let nomeS = document.getElementById("inputNomeSquadra") as HTMLInputElement;
+      let nomeS = document.getElementById(
+        "inputNomeSquadra"
+      ) as HTMLInputElement;
+      let nomeUser = document.getElementById(
+        "inputUsername"
+      ) as HTMLInputElement;
       let nomeTeam = document.getElementById("nomeSquadra") as HTMLInputElement;
-      nomeTeam.innerText = nomeS.value
+      let nomeTeam2 = document.getElementById(
+        "nomeSquadra2"
+      ) as HTMLInputElement;
+      nomeTeam.innerText = nomeS.value;
+      nomeTeam2.innerText = nomeS.value + " " + nomeUser.value;
     });
   });
 </script>
@@ -219,25 +270,25 @@ import TableElement from "../components/TableElement.astro";
   });
 </script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Ottieni tutti i tag <b> all'interno del documento
-    const boldTags = document.querySelectorAll('b');
+    const boldTags = document.querySelectorAll("b");
 
     // Itera attraverso ogni tag <b>
     boldTags.forEach((boldTag) => {
-        // Ottieni il valore come numero
-        const value = parseFloat(boldTag.textContent || '0');
+      // Ottieni il valore come numero
+      const value = parseFloat(boldTag.textContent || "0");
 
-        // Controlla se il valore è maggiore di zero
-        if (value === 0) {
-            // Se il valore è uguale a zero, nascondi il tag <b>
-            boldTag.style.display = 'none';
-        } else {
-            // Altrimenti, fai qualcos'altro (puoi aggiungere ulteriori logiche qui)
-            console.log(`Il valore di ${boldTag.textContent} è maggiore di zero`);
-        }
+      // Controlla se il valore è maggiore di zero
+      if (value === 0) {
+        // Se il valore è uguale a zero, nascondi il tag <b>
+        boldTag.style.display = "none";
+      } else {
+        // Altrimenti, fai qualcos'altro (puoi aggiungere ulteriori logiche qui)
+        console.log(`Il valore di ${boldTag.textContent} è maggiore di zero`);
+      }
     });
-});
+  });
 </script>
 
 <script>
@@ -252,19 +303,87 @@ document.addEventListener('DOMContentLoaded', () => {
       for (let i = 0; i < pecFig.length; i++) {
         let vero = "vero" + i;
         let element = document.getElementById(vero) as HTMLInputElement;
-       
+
         let giocatore = "giocatore" + i;
-       
-          let display = document.getElementById(
-            giocatore,
-          ) as HTMLInputElement;
-          display.style.display = "";
-        
+
+        let display = document.getElementById(giocatore) as HTMLInputElement;
+        display.style.display = "";
       }
-      let nomeS = document.getElementById("inputNomeSquadra") as HTMLInputElement;
+      let nomeS = document.getElementById(
+        "inputNomeSquadra"
+      ) as HTMLInputElement;
       let nomeTeam = document.getElementById("nomeSquadra") as HTMLInputElement;
-      nomeTeam.innerText = ""
+      nomeTeam.innerText = "";
     });
   });
 </script>
 
+<script>
+  document.getElementById("inviaTelegram")?.addEventListener("click", () => {
+    const table = document.getElementById("my-node") as HTMLTableElement;
+    const checkboxes = table.querySelectorAll(
+      ".checkbox"
+    ) as NodeListOf<HTMLInputElement>;
+
+    const selectedRows: HTMLTableRowElement[] = [];
+
+    checkboxes.forEach((checkbox, index) => {
+      const row = checkbox.closest("tr") as HTMLTableRowElement;
+
+      if (checkbox.checked) {
+        selectedRows.push(row);
+      }
+    });
+
+    const textData = selectedRows
+      .map((row) => {
+        const rowData = Array.from(row.children).map(
+          (cell) => cell.textContent
+        );
+        return rowData.join("\t");
+      })
+      .join("\n");
+
+    // Ora hai i dati del testo, puoi scriverli in un file o inviarli a Telegram
+    // Esempio: scrivi i dati in un file di testo
+    downloadTextFile(textData, "selected_rows.txt");
+
+    // Esempio: invia i dati a Telegram
+    // Sostituisci 'IlTuoChatIdTelegram' e 'IlTuoBotToken' con i valori corretti
+    sendToTelegram(
+      "33481261",
+      "6573492960:AAF-WCY_8Q_0Yi1SiFhfGP0vmO1troR0EKU",
+      textData
+    );
+  });
+
+  function downloadTextFile(content: string, filename: string): void {
+    const blob = new Blob([content], { type: "text/plain" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+  }
+
+  function sendToTelegram(
+    chatId: string,
+    botToken: string,
+    text: string
+  ): void {
+    // Implementa l'invio a Telegram utilizzando il bot
+    // Utilizza fetch o una libreria simile per effettuare una richiesta HTTP
+    // Consulta la documentazione dell'API di Telegram per l'invio di messaggi: https://core.telegram.org/bots/api#sendmessage
+    // Esempio:
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+    const params = new URLSearchParams({
+      chat_id: chatId,
+      text: text,
+    });
+    fetch(`${url}?${params.toString()}`, { method: "POST" })
+      .then((response) => response.json())
+      .then((data) => console.log("Messaggio inviato a Telegram:", data))
+      .catch((error) =>
+        console.error("Errore nell'invio del messaggio a Telegram:", error)
+      );
+  }
+</script>

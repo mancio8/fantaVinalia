@@ -4,9 +4,6 @@ import HorizontalCard from "../components/HorizontalCard.astro";
 import { getCollection } from "astro:content";
 import createSlug from "../lib/createSlug";
 import Table from "../components/Table.astro";
-
-
-
 ---
 
 <BaseLayout sideBarActiveItemID="home">
@@ -26,26 +23,86 @@ import Table from "../components/Table.astro";
         un capitano, che sarà cruciale nella serata finale quando i suoi bonus e
         i suoi malus verranno raddoppiati1. Quindi devi sceglierlo molto
         attentamente. Quando componi la tua squadra devi fare attenzione a non
-        superare il budget di 100 Bicchieri, il sistema non dovrebbe permetterlo ma
-        è comunque bene ricordarlo. I Bicchieri sono la moneta ufficiale del
-        Fantavinalia e ogni giocatore ne ha 100 per comporre la sua squadra. Ricorda, il Fantavinalia è un
-        gioco e dovrebbe essere divertente! Buon divertimento! 😊
+        superare il budget di 100 Bicchieri, il sistema non dovrebbe permetterlo
+        ma è comunque bene ricordarlo. I Bicchieri sono la moneta ufficiale del
+        Fantavinalia e ogni giocatore ne ha 100 per comporre la sua squadra.
+        Ricorda, il Fantavinalia è un gioco e dovrebbe essere divertente! Buon
+        divertimento! 😊
       </text>
     </div>
- 
 
- 
-  <div class="divider my-0"></div>
-  
+    <div class="divider my-6"></div>
 
+    <div>
+     
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from blog</div>
+      <div class="flex flex-col w-full border-opacity-50">
+        <div class="grid h-48 card bg-base-300 rounded-box place-items-center">
+          <textarea
+          id="sugg"
+          placeholder="Suggerimenti"
+          class="textarea textarea-warning textarea-bordered textarea-lg w-full max-w-xs"
+        ></textarea>
+        </div>
+        <div class="divider divider-secondary"></div>
+        <div class="grid h-20 card bg-base-300 rounded-box place-items-center">
+          <button class="btn btn-outline btn-secondary" id="inviaSugg">Invia Suggerimenti</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Funzione per inviare il testo a Telegram
+      const inviaTestoATelegram = async (testo: string) => {
+        try {
+          // Sostituisci 'YOUR_BOT_TOKEN' con il token del tuo bot Telegram
+          const botToken = "6573492960:AAF-WCY_8Q_0Yi1SiFhfGP0vmO1troR0EKU";
+          // Sostituisci 'YOUR_CHAT_ID' con l'ID della chat a cui vuoi inviare il messaggio
+          const chatId = "33481261";
+
+          // URL dell'API di Telegram per inviare un messaggio di testo
+          const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+          // Parametri del messaggio da inviare
+          const params = {
+            chat_id: chatId,
+            text: testo,
+          };
+
+          // Effettua la richiesta POST all'API di Telegram utilizzando Fetch
+          const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(params),
+          });
+
+          // Converte la risposta in formato JSON
+          const responseData = await response.json();
+
+          // Puoi gestire la risposta qui se necessario
+          console.log(responseData);
+        } catch (error) {
+          // Gestisci gli errori qui
+          console.error("Errore nell'invio del messaggio a Telegram:", error);
+        }
+      };
+
+      // Funzione chiamata al click del pulsante
+      const handleClick = () => {
+        let sugg = document.getElementById("sugg") as HTMLInputElement;
+        const testoDaInviare = sugg.value;
+        inviaTestoATelegram(testoDaInviare);
+      };
+
+      // Ottieni il riferimento al pulsante HTML
+      const pulsante = document.getElementById("inviaSugg");
+
+      // Aggiungi un listener per il click
+      if (pulsante) {
+        pulsante.addEventListener("click", handleClick);
+      }
+    </script>
   </div>
-
-  
-
-
-
-
 </BaseLayout>
