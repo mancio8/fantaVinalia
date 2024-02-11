@@ -1,0 +1,595 @@
+---
+const {
+  nomeArtista,
+  punti,
+  giocatore1,
+  giocatore2,
+  giocatore3,
+  giocatore4,
+  giocatore5,
+  cantina,
+} = Astro.props;
+import { Image } from "astro:assets";
+import TableElementTeam from "../components/TableElementTeam.astro";
+---
+
+<div
+  data-score={punti}
+  class="rounded-lg bg-base-300 hover:shadow-xl transition ease-in-out hover:scale-[102%]"
+>
+  <div class="hero-content flex-col md:flex-row">
+    <div class="grow w-full">
+      <details class="collapse bg-base-200">
+        <summary class="collapse-title text-xl font-medium">
+          {nomeArtista}<div class="divider divider-secondary divider-end">
+            {punti}
+          </div>
+        </summary>
+
+        <div class="collapse-content">
+          <div class="collapse bg-base-200">
+            <input type="radio" name="my-accordion-1" />
+            <div class="collapse-title text-xl font-medium">
+              Prima serata
+              <div class="badge badge-secondary badge-lg"></div>
+            </div>
+            <div class="collapse-content">
+              <ul class="list-disc">
+                <li hidden class="py-2">
+                  Sospiro d'Arte Ambientale: Il Campione delle Caraffe!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Navigatori Notturni: Il Custode del Ritorno!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Storia Magica: L'Incantatore di Instagram!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Cantina Inesauribile: Il Maestro dell'Abbondanza!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Infuocato: Il Virtuoso del Divertimento!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Alba di Coraggio: L'Eroe del Risveglio Anticipato!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Guida Turistica: L'Ambasciatore dell'Allegria!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Protagonista: L'Icona Visiva di Fantavinalia!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Alternativo: I Ribelli dell'Euforia!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Genitore Sbalorditivo: La Magia dell'Equilibrio!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Grancolazione all'Alba: L'Alleviatore dell'Aurora!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Passeggiata Penitente: Il Viandante Sconfitto!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Nettare Tradito: Il Fedifrago della Birra!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Fantasma dell'Assenza: L'Eroe Mancato!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Sonnambulo: L'Errante Incosciente!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Litigato: Il Controverso Scontroso!
+                  <div class="badge badge-error">-30</div>
+                </li>
+                <li hidden class="py-2">
+                  Auto Danneggiata: Il Disastro Automobilistico!
+                  <div class="badge badge-error">-30</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse bg-base-200">
+            <input type="radio" name="my-accordion-1" />
+            <div class="collapse-title text-xl font-medium">
+              Seconda serata
+              <div class="badge badge-secondary badge-lg"></div>
+            </div>
+            <div class="collapse-content">
+              <ul class="list-disc">
+                <li hidden class="py-2">
+                  Sospiro d'Arte Ambientale: Il Campione delle Caraffe!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Navigatori Notturni: Il Custode del Ritorno!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Storia Magica: L'Incantatore di Instagram!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Cantina Inesauribile: Il Maestro dell'Abbondanza!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Infuocato: Il Virtuoso del Divertimento!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Alba di Coraggio: L'Eroe del Risveglio Anticipato!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Guida Turistica: L'Ambasciatore dell'Allegria!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Protagonista: L'Icona Visiva di Fantavinalia!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Alternativo: I Ribelli dell'Euforia!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Genitore Sbalorditivo: La Magia dell'Equilibrio!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Grancolazione all'Alba: L'Alleviatore dell'Aurora!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Passeggiata Penitente: Il Viandante Sconfitto!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Nettare Tradito: Il Fedifrago della Birra!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Fantasma dell'Assenza: L'Eroe Mancato!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Sonnambulo: L'Errante Incosciente!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Litigato: Il Controverso Scontroso!
+                  <div class="badge badge-error">-30</div>
+                </li>
+                <li hidden class="py-2">
+                  Auto Danneggiata: Il Disastro Automobilistico!
+                  <div class="badge badge-error">-30</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse bg-base-200">
+            <input type="radio" name="my-accordion-1" />
+            <div class="collapse-title text-xl font-medium">
+              Terza serata
+              <div class="badge badge-secondary badge-lg"></div>
+            </div>
+            <div class="collapse-content">
+              <ul class="list-disc">
+                <li hidden class="py-2">
+                  Sospiro d'Arte Ambientale: Il Campione delle Caraffe!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Navigatori Notturni: Il Custode del Ritorno!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Storia Magica: L'Incantatore di Instagram!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Cantina Inesauribile: Il Maestro dell'Abbondanza!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Infuocato: Il Virtuoso del Divertimento!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Alba di Coraggio: L'Eroe del Risveglio Anticipato!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Guida Turistica: L'Ambasciatore dell'Allegria!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Protagonista: L'Icona Visiva di Fantavinalia!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Alternativo: I Ribelli dell'Euforia!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Genitore Sbalorditivo: La Magia dell'Equilibrio!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Grancolazione all'Alba: L'Alleviatore dell'Aurora!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Passeggiata Penitente: Il Viandante Sconfitto!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Nettare Tradito: Il Fedifrago della Birra!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Fantasma dell'Assenza: L'Eroe Mancato!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Sonnambulo: L'Errante Incosciente!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Litigato: Il Controverso Scontroso!
+                  <div class="badge badge-error">-30</div>
+                </li>
+                <li hidden class="py-2">
+                  Auto Danneggiata: Il Disastro Automobilistico!
+                  <div class="badge badge-error">-30</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse bg-base-200">
+            <input type="radio" name="my-accordion-1" />
+            <div class="collapse-title text-xl font-medium">
+              Quarta serata
+              <div class="badge badge-secondary badge-lg"></div>
+            </div>
+            <div class="collapse-content">
+              <ul class="list-disc">
+                <li hidden class="py-2">
+                  Sospiro d'Arte Ambientale: Il Campione delle Caraffe!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Navigatori Notturni: Il Custode del Ritorno!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Storia Magica: L'Incantatore di Instagram!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Cantina Inesauribile: Il Maestro dell'Abbondanza!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Infuocato: Il Virtuoso del Divertimento!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Alba di Coraggio: L'Eroe del Risveglio Anticipato!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Guida Turistica: L'Ambasciatore dell'Allegria!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Protagonista: L'Icona Visiva di Fantavinalia!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Alternativo: I Ribelli dell'Euforia!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Genitore Sbalorditivo: La Magia dell'Equilibrio!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Grancolazione all'Alba: L'Alleviatore dell'Aurora!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Passeggiata Penitente: Il Viandante Sconfitto!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Nettare Tradito: Il Fedifrago della Birra!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Fantasma dell'Assenza: L'Eroe Mancato!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Sonnambulo: L'Errante Incosciente!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Litigato: Il Controverso Scontroso!
+                  <div class="badge badge-error">-30</div>
+                </li>
+                <li hidden class="py-2">
+                  Auto Danneggiata: Il Disastro Automobilistico!
+                  <div class="badge badge-error">-30</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse bg-base-200">
+            <input type="radio" name="my-accordion-1" />
+            <div class="collapse-title text-xl font-medium">
+              Quinta serata
+              <div class="badge badge-secondary badge-lg"></div>
+            </div>
+            <div class="collapse-content">
+              <ul class="list-disc">
+                <li hidden class="py-2">
+                  Sospiro d'Arte Ambientale: Il Campione delle Caraffe!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Navigatori Notturni: Il Custode del Ritorno!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Storia Magica: L'Incantatore di Instagram!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Cantina Inesauribile: Il Maestro dell'Abbondanza!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Infuocato: Il Virtuoso del Divertimento!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Alba di Coraggio: L'Eroe del Risveglio Anticipato!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Guida Turistica: L'Ambasciatore dell'Allegria!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Protagonista: L'Icona Visiva di Fantavinalia!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Alternativo: I Ribelli dell'Euforia!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Genitore Sbalorditivo: La Magia dell'Equilibrio!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Grancolazione all'Alba: L'Alleviatore dell'Aurora!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Passeggiata Penitente: Il Viandante Sconfitto!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Nettare Tradito: Il Fedifrago della Birra!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Fantasma dell'Assenza: L'Eroe Mancato!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Sonnambulo: L'Errante Incosciente!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Litigato: Il Controverso Scontroso!
+                  <div class="badge badge-error">-30</div>
+                </li>
+                <li hidden class="py-2">
+                  Auto Danneggiata: Il Disastro Automobilistico!
+                  <div class="badge badge-error">-30</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse bg-base-200">
+            <input type="radio" name="my-accordion-1" />
+            <div class="collapse-title text-xl font-medium">
+              Sesta serata
+              <div class="badge badge-secondary badge-lg"></div>
+            </div>
+            <div class="collapse-content">
+              <ul class="list-disc">
+                <li hidden class="py-2">
+                  Sospiro d'Arte Ambientale: Il Campione delle Caraffe!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Navigatori Notturni: Il Custode del Ritorno!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Storia Magica: L'Incantatore di Instagram!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Cantina Inesauribile: Il Maestro dell'Abbondanza!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Infuocato: Il Virtuoso del Divertimento!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Alba di Coraggio: L'Eroe del Risveglio Anticipato!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Guida Turistica: L'Ambasciatore dell'Allegria!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Protagonista: L'Icona Visiva di Fantavinalia!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Alternativo: I Ribelli dell'Euforia!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Genitore Sbalorditivo: La Magia dell'Equilibrio!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Grancolazione all'Alba: L'Alleviatore dell'Aurora!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Passeggiata Penitente: Il Viandante Sconfitto!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Nettare Tradito: Il Fedifrago della Birra!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Fantasma dell'Assenza: L'Eroe Mancato!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Sonnambulo: L'Errante Incosciente!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Litigato: Il Controverso Scontroso!
+                  <div class="badge badge-error">-30</div>
+                </li>
+                <li hidden class="py-2">
+                  Auto Danneggiata: Il Disastro Automobilistico!
+                  <div class="badge badge-error">-30</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="collapse bg-base-200">
+            <input type="radio" name="my-accordion-1" />
+            <div class="collapse-title text-xl font-medium">
+              Settima serata
+              <div class="badge badge-secondary badge-lg"></div>
+            </div>
+            <div class="collapse-content">
+              <ul class="list-disc">
+                <li hidden class="py-2">
+                  Sospiro d'Arte Ambientale: Il Campione delle Caraffe!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Navigatori Notturni: Il Custode del Ritorno!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Storia Magica: L'Incantatore di Instagram!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Cantina Inesauribile: Il Maestro dell'Abbondanza!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Infuocato: Il Virtuoso del Divertimento!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Alba di Coraggio: L'Eroe del Risveglio Anticipato!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Guida Turistica: L'Ambasciatore dell'Allegria!
+                  <div class="badge badge-success">+15</div>
+                </li>
+                <li hidden class="py-2">
+                  Protagonista: L'Icona Visiva di Fantavinalia!
+                  <div class="badge badge-success">+5</div>
+                </li>
+                <li hidden class="py-2">
+                  Palco Alternativo: I Ribelli dell'Euforia!
+                  <div class="badge badge-success">+10</div>
+                </li>
+                <li hidden class="py-2">
+                  Genitore Sbalorditivo: La Magia dell'Equilibrio!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Grancolazione all'Alba: L'Alleviatore dell'Aurora!
+                  <div class="badge badge-success">+20</div>
+                </li>
+                <li hidden class="py-2">
+                  Passeggiata Penitente: Il Viandante Sconfitto!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Nettare Tradito: Il Fedifrago della Birra!
+                  <div class="badge badge-error">-10</div>
+                </li>
+                <li hidden class="py-2">
+                  Fantasma dell'Assenza: L'Eroe Mancato!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Sonnambulo: L'Errante Incosciente!
+                  <div class="badge badge-error">-15</div>
+                </li>
+                <li hidden class="py-2">
+                  Litigato: Il Controverso Scontroso!
+                  <div class="badge badge-error">-30</div>
+                </li>
+                <li hidden class="py-2">
+                  Auto Danneggiata: Il Disastro Automobilistico!
+                  <div class="badge badge-error">-30</div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="divider divider-primary"></div>
+  </div>
+</div>
