@@ -18,6 +18,7 @@ import Table from "../components/Table.astro";
     </div>
     <div class="mt-8"></div>
   </div>
+  <input type="text" placeholder="Cerca squadra" id="cerca" class="input input-bordered input-secondary w-full max-w-xs" />
   <div class="divider divider-success"></div>
   <HorizontalCardTeam
     nomeSquadra="Team1"
@@ -76,4 +77,35 @@ import Table from "../components/Table.astro";
    
     </script>
 
+<script> 
+  // Ottenere l'elemento di input con ID 'cerca' 
+const inputElement = document.getElementById('cerca') as HTMLInputElement; 
+
+// Aggiungere un gestore per l'evento di input 
+inputElement.addEventListener('input', () => { 
+   // Ottenere il testo inserito nell'input e convertirlo in minuscolo 
+   const searchText = inputElement.value.toLowerCase(); 
+
+   // Ottenere tutti i div con classe 'rounded-lg' 
+   const divsToFilter = document.querySelectorAll('.rounded-lg'); 
+
+   // Iterare attraverso i div e nascondere quelli che non corrispondono alla ricerca 
+   divsToFilter.forEach((div) => { 
+       const nomeSElement = div.querySelector('.nomeS') as HTMLElement | null; 
+
+       // Verificare se l'elemento esiste prima di accedere al testo 
+       if (nomeSElement) { 
+           const nomeSContent = nomeSElement.textContent.toLowerCase(); 
+
+           // Mostrare o nascondere il div in base alla corrispondenza con la ricerca 
+           if (nomeSContent.includes(searchText)) { 
+           (div as HTMLElement).style.display = 'block';  // Mostra il div 
+       } else { 
+           (div as HTMLElement).style.display = 'none';   // Nascondi il div 
+       } 
+       } 
+   }); 
+}); 
+
+ </script>
 
